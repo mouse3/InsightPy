@@ -6,28 +6,57 @@ from pcap_2_map import pcap_to_folium_map
 import os
 
 menu = """  
--h: Shows this help message
-
---ext-changed [directory]: Verifies if the extension of a file in a directory was changed
-
---entropy [file path]: Analyzes the entropy of a file to detect anti-forensic measures
-
---lsb [file path]: Decodes a hidden message from an image
-
---hash [file path] [hash type]: Calculates the hash of a specified file (default: MD5)
-
---strings [directory] [min_length]: Extracts strings in a file with length >= min_length
-
---hexdump [file path]: Displays the hex dump of a file
-
---analyze-sniffed [file path] [output file] [mode]: Analyzes a .pcap file to output network connections
-
---analyze-log [file path]: Visualizes Android device logs in 3D
-
---trace-map [tracert path] [map file]: Shows the path of an ICMP from a 'tracert' command
-
---wav-analysis [wav file path]: Analyzes and displays audio data of a .wav file
-
+-h                                                          Shows this text messagge
+    
+--ext-changed [directory]                                   Verifies if the extension of a file in a directory was changed
+    
+--entropy [file path]                                       Analises the entropy and the redundancy of a file, This may detect some anti-forensic measure
+    
+--lsb [file path]                                           Decode a ocult message of a image
+    
+--hash [file path] [hash type]                              Calculates the hash of a specified file, default: MD5
+    
+--strings [directory] [min_length]                          Prints the strings on a file only if the strings are larger than the min_lenght
+    
+--hexdump [file path]                                       Prints the hexdump of a file (the hex information and translated to ASCII utf-8 )
+    
+--analyze-sniffed [file path] [output file name] [mode]     Prints the connections that have been made based on sniffing a .pcap file and its variants, 
+                                                            and also prints the number of requests between one IP and another, smth like:
+                                                                192.168.0.1 <-> 192.168.0.4 85 requests X MB/s
+                                                                192.168.0.2 <-> 192.168.0.5 66 requests X MB/s
+                                                                192.168.0.3 <-> 192.168.0.6 2 requests X MB/s
+                                                            if mode is 1 -> Outputs a map created in folium with the .html extension
+                                                            if mode is 2-> Outputs an image
+    
+--analyze-log [file path]                                   It represents the ADB logcat logs of an Android device on a 3-dimensional coordinate axis. 
+                                                                X-axis: Unix time(ms)
+                                                                Y-axis: PID
+                                                                Z-axis: Importance (Info, warning, error and fatal)
+                                                            Export the data using: adb logcat *:VIWEF > file.txt
+    
+--analyze-image [nº] [nombre del mapa a guardar.html]       nº = 1, Prints any possible editions in a image
+                                                            nº = 2, Creates a .html map in which saves the geo-locations of the images
+                                                            si nº = 3, Do both things
+    
+--trace-map [tracert path] [map file name]                  Shows the path of a icmp from a "tracert -4 -h 30 example.com > output.txt" command, 
+                                                                example.com: the path of the domain that you want to visualize
+                                                                output.txt: The file name, this file has the output of the comand saved in it
+    
+                                                            if you dont write the [map file name], it would save the map in a file whose name is "tracert_map.html"
+                                                                Note that the location of each point(node) of the visualized path is extracted by ipinfo.io, it uses IP GeoLocation.
+    
+--wav-analysis [wav file path]                              Shows the two-dimensional(
+                                                                                    X- Time(s)
+                                                                                    Y- Amplitude) a
+                                                            and three-dimensional(
+                                                                                    X-Time(s)
+                                                                                    Y-Frecuency(Hz)
+                                                                                    Z-Intensity(dB)) 
+                                                            graph representing the audio of a .wav file
+                                                            Additionaly:
+                                                                It shows the constellation diagram(that helps you to know if it's phase modulated).
+                                                                And the fourier transform(To know if it is frecuency modulated) 
+                                                            The intensity is calculated using the log10 of watts + 1e-18, this is done to avoid any calculation problems  
 """
 
 def extract_strings(file_path: str, min_length: int):
