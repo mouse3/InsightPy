@@ -6,7 +6,7 @@ A forensic tool made-in Python with general purposes. All the functions that can
 2. Added the "clear" button, that clears the console.
 3. Optimizated code
 ###
-1. When the `analyze sniffed` function is used, it prints a `Error: unsupported operand type(s) for +: 'NoneType' and 'str'` error but it still working, it's not a problem at all.
+1. Any bugs
 ### **Usage**:
 ```
 -h                                                          Shows this text messagge
