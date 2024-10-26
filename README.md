@@ -1,29 +1,27 @@
 
 A forensic tool which is still in development, specializes in file change detection and other forensic uses.
 
-### Releases in the 4.0 version:
-1. `tkinter`-based User Interface
-2. Optimisation in the libraries and dependencies importations.
-### Bugs
-1. When `Analyze sniffed` function is used, it prints the `Error: unsupported operand type(s) for +: 'NoneType' and 'str'` error but still working, no it isn't a problem at all.
-
+### Releases in the 3.0 version:
+1. Added a new function(`analyze-pcap`). *There is an example of the output in the `example` directory*
+2. User Interface added (made in `kivy`) which needs some fixes.
+3. Optimisation in the libraries and dependencies importations.
 ### **Usage**:
 ```
-h                                                          Shows this text messagge
+-h                                                          Shows this text messagge
 
-ext-changed [directory]                                   Verifies if the extension of a file in a directory was changed
+--ext-changed [directory]                                   Verifies if the extension of a file in a directory was changed
 
-entropy [file path]                                       Analises the entropy and the redundancy of a file, This may detect some anti-forensic measure
+--entropy [file path]                                       Analises the entropy and the redundancy of a file, This may detect some anti-forensic measure
 
-lsb [file path]                                           Decode a ocult message of a image
+--lsb [file path]                                           Decode a ocult message of a image
 
-hash [file path] [hash type]                              Calculates the hash of a specified file, default: MD5
+--hash [file path] [hash type]                              Calculates the hash of a specified file, default: MD5
 
-strings [directory] [min_length]                          Prints the strings on a file only if the strings are larger than the min_lenght
+--strings [directory] [min_length]                          Prints the strings on a file only if the strings are larger than the min_lenght
 
-hexdump [file path]                                       Prints the hexdump of a file (the hex information and translated to ASCII utf-8 )
+--hexdump [file path]                                       Prints the hexdump of a file (the hex information and translated to ASCII utf-8 )
 
-analyze-sniffed [file path] [output file name] [mode]     Prints the connections that have been made based on sniffing a .pcap file and its variants,
+--analyze-sniffed [file path] [output file name] [mode]     Prints the connections that have been made based on sniffing a .pcap file and its variants,
 
                                                             and also prints the number of requests between one IP and another, smth like:
 
@@ -37,7 +35,7 @@ analyze-sniffed [file path] [output file name] [mode]     Prints the connectio
 
                                                             if mode is 2-> Outputs an image
 
-analyze-log [file path]                                   It represents the ADB logcat logs of an Android device on a 3-dimensional coordinate axis.
+--analyze-log [file path]                                   It represents the ADB logcat logs of an Android device on a 3-dimensional coordinate axis.
 
                                                                 X-axis: Unix time(ms)
 
@@ -47,13 +45,13 @@ analyze-log [file path]                                   It re
 
                                                             Export the data using: adb logcat *:VIWEF > file.txt
 
-analyze-image [nº] [nombre del mapa a guardar.html]       nº = 1, Prints any possible editions in a image
+--analyze-image [nº] [nombre del mapa a guardar.html]       nº = 1, Prints any possible editions in a image
 
                                                             nº = 2, Creates a .html map in which saves the geo-locations of the images
 
                                                             si nº = 3, Do both things
 
-trace-map [tracert path] [map file name]                  Shows the path of a icmp from a "tracert -4 -h 30 example.com > output.txt" command,
+--trace-map [tracert path] [map file name]                  Shows the path of a icmp from a "tracert -4 -h 30 example.com > output.txt" command,
 
                                                                 example.com: the path of the domain that you want to visualize
 
@@ -63,7 +61,7 @@ trace-map [tracert path] [map file name]                  Shows the pat
 
                                                                 Note that the location of each point(node) of the visualized path is extracted by ipinfo.io, it uses IP GeoLocation.
 
-wav-analysis [wav file path]                              Shows the two-dimensional(
+--wav-analysis [wav file path]                              Shows the two-dimensional(
 
                                                                                     X- Time(s)
 
@@ -88,13 +86,15 @@ wav-analysis [wav file path]                              Shows t
                                                             The intensity is calculated using the log10 of watts + 1e-18, this is done to avoid any calculation problems
 ```
 ### **Libraries imports**:
-You can install all of this dependencies using:
+You can install all of this dependencies using
 ```
 pip install -r requirements.txt
 ```
 Look at the `requirements.txt` file for more details about the dependencies needed
 
 The estimated size of all the files is around 100 MB.
+#### **Be careful with:**
+You shouldn't modify the`.zip` file because that's the module functions and its hard to repair it. So, you just need to modify and make changes in the `.py` file. The code is completely commented in Spanish, but i'll fix it as soon as possible
 
 #### ***Help from the community:***
-This repository is open to implement functions in the code by a **Pull Request**
+By the way, this repository is open to implement functions in the code (Like a new function, optimisation or something like that) by a **Pull Request**
