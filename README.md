@@ -3,7 +3,8 @@ A forensic tool made-in Python with general purposes. All the functions that can
 
 ### Releases in the 4.0 version:
 1. User Interface made in`tkinter`
-2. Optimizated code
+2. Added the "clear" button, that clears the console.
+3. Optimizated code
 ###
 1. When the `analyze sniffed` function is used, it prints a `Error: unsupported operand type(s) for +: 'NoneType' and 'str'` error but it still working, it's not a problem at all.
 ### **Usage**:
@@ -86,6 +87,8 @@ A forensic tool made-in Python with general purposes. All the functions that can
 
                                                             The intensity is calculated using the log10 of watts + 1e-18, this is done to avoid any calculation problems
 ```
+![image](https://github.com/user-attachments/assets/06744da0-e3d4-46df-bb50-6a6fe3da9d68)
+
 ### **Libraries imports**:
 You can install all of this dependencies using
 ```
