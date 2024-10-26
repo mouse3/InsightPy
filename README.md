@@ -1,5 +1,5 @@
 
-A forensic tool which is still in development, specializes in file change detection and other forensic uses.
+A forensic tool made-in Python with general purposes. All the functions that can be used are specified in the Usage 
 
 ### Releases in the 3.0 version:
 1. Added a new function(`analyze-pcap`). *There is an example of the output in the `example` directory*
