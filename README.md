@@ -1,10 +1,11 @@
 
 A forensic tool made-in Python with general purposes. All the functions that can be used are specified in the Usage 
 
-### Releases in the 3.0 version:
-1. Added a new function(`analyze-pcap`). *There is an example of the output in the `example` directory*
-2. User Interface added (made in `kivy`) which needs some fixes.
-3. Optimisation in the libraries and dependencies importations.
+### Releases in the 4.0 version:
+1. User Interface made in`tkinter`
+2. Optimizated code
+###
+1. When the `analyze sniffed` function is used, it prints a `Error: unsupported operand type(s) for +: 'NoneType' and 'str'` error but it still working, it's not a problem at all.
 ### **Usage**:
 ```
 -h                                                          Shows this text messagge
