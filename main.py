@@ -152,7 +152,7 @@ class MyApp:
         clear_button.grid(row=2, column=0, padx=10, pady=10)
 
         # Console output
-        self.console = Text(root, height=40, width=160)
+        self.console = Text(root, height=40, width=180)
         self.console.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
 
     def update_time(self):
