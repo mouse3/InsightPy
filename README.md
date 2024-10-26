@@ -1,35 +1,100 @@
 
 A forensic tool which is still in development, specializes in file change detection and other forensic uses.
 
+### Releases in the 4.0 version:
+1. `tkinter`-based User Interface
+2. Optimisation in the libraries and dependencies importations.
+### Bugs
+1. When `Analyze sniffed` function is used, it prints the `Error: unsupported operand type(s) for +: 'NoneType' and 'str'` error but still working, no it isn't a problem at all.
 
 ### **Usage**:
 ```
-python3 PyExifTool.py:
+h                                                          Shows this text messagge
 
--h Shows this text block
+ext-changed [directory]                                   Verifies if the extension of a file in a directory was changed
 
---ext-changed Verifies if the extension of a file in a directory was changed
+entropy [file path]                                       Analises the entropy and the redundancy of a file, This may detect some anti-forensic measure
 
---analyze-image [nº] [name of the map to save.html] 
+lsb [file path]                                           Decode a ocult message of a image
 
-nº = 1, Prints any possible editions in a image
+hash [file path] [hash type]                              Calculates the hash of a specified file, default: MD5
 
-nº = 2, Creates a .html map in which saves the geo-locations of the images 
+strings [directory] [min_length]                          Prints the strings on a file only if the strings are larger than the min_lenght
 
-nº = 3, Do both things 
+hexdump [file path]                                       Prints the hexdump of a file (the hex information and translated to ASCII utf-8 )
+
+analyze-sniffed [file path] [output file name] [mode]     Prints the connections that have been made based on sniffing a .pcap file and its variants,
+
+                                                            and also prints the number of requests between one IP and another, smth like:
+
+                                                                192.168.0.1 <-> 192.168.0.4 85 requests X MB/s
+
+                                                                192.168.0.2 <-> 192.168.0.5 66 requests X MB/s
+
+                                                                192.168.0.3 <-> 192.168.0.6 2 requests X MB/s
+
+                                                            if mode is 1 -> Outputs a map created in folium with the .html extension
+
+                                                            if mode is 2-> Outputs an image
+
+analyze-log [file path]                                   It represents the ADB logcat logs of an Android device on a 3-dimensional coordinate axis.
+
+                                                                X-axis: Unix time(ms)
+
+                                                                Y-axis: PID
+
+                                                                Z-axis: Importance (Info, warning, error and fatal)
+
+                                                            Export the data using: adb logcat *:VIWEF > file.txt
+
+analyze-image [nº] [nombre del mapa a guardar.html]       nº = 1, Prints any possible editions in a image
+
+                                                            nº = 2, Creates a .html map in which saves the geo-locations of the images
+
+                                                            si nº = 3, Do both things
+
+trace-map [tracert path] [map file name]                  Shows the path of a icmp from a "tracert -4 -h 30 example.com > output.txt" command,
+
+                                                                example.com: the path of the domain that you want to visualize
+
+                                                                output.txt: The file name, this file has the output of the comand saved in it
+
+                                                            if you dont write the [map file name], it would save the map in a file whose name is "tracert_map.html"
+
+                                                                Note that the location of each point(node) of the visualized path is extracted by ipinfo.io, it uses IP GeoLocation.
+
+wav-analysis [wav file path]                              Shows the two-dimensional(
+
+                                                                                    X- Time(s)
+
+                                                                                    Y- Amplitude) a
+
+                                                            and three-dimensional(
+
+                                                                                    X-Time(s)
+
+                                                                                    Y-Frecuency(Hz)
+
+                                                                                    Z-Intensity(dB))
+
+                                                            graph representing the audio of a .wav file
+
+                                                            Additionaly:
+
+                                                                It shows the constellation diagram(that helps you to know if it's phase modulated).
+
+                                                                And the fourier transform(To know if it is frecuency modulated)
+
+                                                            The intensity is calculated using the log10 of watts + 1e-18, this is done to avoid any calculation problems
 ```
-
 ### **Libraries imports**:
-You will need:
+You can install all of this dependencies using:
 ```
-	1-Folium: pip install folium
-	2-Datetime:pip install DateTime
-	3-OS
-	4-SYS
+pip install -r requirements.txt
 ```
+Look at the `requirements.txt` file for more details about the dependencies needed
 
-#### **Be careful with:**
-You shouldn't modify the .zip file because that's the module functions and its hard to repair it if you broke the file or modify it. So, you just need to modify and make changes in the .py file. The code is completely commented in Spanish but i will solve that as soon as possible
+The estimated size of all the files is around 100 MB.
 
 #### ***Help from the community:***
-By the way, this repository is open to implement functions in the code (Like a new function or something like that) by a **Pull Request**
+This repository is open to implement functions in the code by a **Pull Request**
