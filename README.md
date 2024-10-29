@@ -97,8 +97,6 @@ pip install -r requirements.txt
 Look at the `requirements.txt` file for more details about the dependencies needed
 
 The estimated size of all the files is around 100 MB.
-#### **Be careful with:**
-You shouldn't modify the`.zip` file because that's the module functions and its hard to repair it. So, you just need to modify and make changes in the `.py` file. The code is completely commented in Spanish, but i'll fix it as soon as possible
 
 #### ***Help from the community:***
 By the way, this repository is open to implement functions in the code (Like a new function, optimisation or something like that) by a **Pull Request**
