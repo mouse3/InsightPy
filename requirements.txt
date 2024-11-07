@@ -1,4 +1,5 @@
 pyexiftool
+requests
 folium
 DateTime
 pytsk3
