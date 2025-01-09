@@ -1,0 +1,7 @@
+threading
+pyhackrf
+random
+time
+matplotlib
+numpy
+folium
