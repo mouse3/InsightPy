@@ -5,8 +5,8 @@ A forensic tool made-in Python with general purposes. All the functions that can
 1. User Interface made in`tkinter`
 2. Added the "clear" button, that clears the console.
 3. Optimizated code
-###
-1. Any bugs
+### Fixed:
+1. Any bugs(idk which ones)
 ### **Usage**:
 ```
 -h                                                          Shows this text messagge
@@ -99,4 +99,4 @@ Look at the `requirements.txt` file for more details about the dependencies need
 The estimated size of all the files is around 100 MB.
 
 #### ***Help from the community:***
-By the way, this repository is open to implement functions in the code (Like a new function, optimisation or something like that) by a **Pull Request**
+By the way, this repository is open to implement new things in the code (Like a new function, optimisation or something like that) by a **Pull Request**
